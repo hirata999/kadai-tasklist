@@ -7,7 +7,11 @@ class TasksController < ApplicationController
   def show
     @task = Task.find(params[:id])
   end
-
+  
+  def new
+    @task = Task.new
+  end
+  
   def create
     @task = Task.new(task_params)
 
@@ -25,7 +29,7 @@ class TasksController < ApplicationController
   end
 
   def update
-    @message = Task.find(params[:id])
+    @task = Task.find(params[:id])
 
     if @task.update(task_params)
       flash[:success] = 'Task は正常に更新されました'
